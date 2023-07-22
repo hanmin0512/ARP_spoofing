@@ -21,6 +21,9 @@
   5. 변조2 : IP : Target_A_IP && MAC : malicious MAC주소 를 기입한다 (외부에서 Gateway로 들어온 데이터를 malicious가 받게된다. )
   6. 호스트 A는 변조된 패킷을 받아 ARP Cache Table을 갱신한다(Poisoning)
   7. 호스트 A는 외부와 통신을 하기위해 패킷을 전송하지만, malicious에게 패킷을 보내게 된다.
+  8. malicious는 받은 패킷을 Gateway로 보낸다.
+  9. Gateway는 인터넷으로 패킷을 라우팅한다.
+  10. Gateway는 외부로부터 목적지가 호스트 A인 패킷을 받아 malicious에게 전달한다.
 
 ## ARP Spoofing 구현하기
 - nmap 툴을 사용한다.
@@ -39,6 +42,11 @@
 - 변조2 : ARP reply packet[src_IP = Target_A_IP, src_MAC = malicious_MAC, dst_IP = Gateway_IP, dst_MAC = Gateway_MAC] <br>
   즉 외부로부터 Target_A가 목적지인 패킷을 받을 때 Gateway를 거쳐야 하므로 Gateway의 ARP Cache Table에 Target_A의 MAC주소를 malicious MAC주소로 변조시켜 <br>
   외부로부터 들어온 데이터를 malicious가 받도록 하기위한 변조 패킷이다.
+
+## 실행 환경
+- victim computer : window7
+- malicious computer : macOS
+- gateway : iptime(wifi)
 
 ## 실행 화면
 
