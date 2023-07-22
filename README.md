@@ -79,6 +79,25 @@
 > Gateway가 받은 피해자 컴퓨터 MAC주소가 공격자 MAC주소로 변조된 패킷
 ![스크린샷 2023-07-23 오전 2 09 37](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/b3146e8c-8baf-450d-add2-e8eb575da78b)
 
+## 그림으로 표현
+
+> 감염시킬 Gateway와 victim의 MAC주소를 요청하는 ARP request요청 패킷이 담긴 프레임을 Broadcast에 전송
+![ARP_request](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/83a627d5-3c92-45e6-8dfe-73bce798936f)
+
+> Broadcast는 같은 네트워크에 존재하는 호스트들에게 ARP 요청 패킷을 Broadcasting한다.
+![Arp_reply](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/e1a76db2-502a-492d-9e97-55d6995ee923)
+
+> ARP요청 패킷에 해당하는 호스트들은 자신의 MAC주소를 유니캐스팅으로 알려준다.
+![getMAC](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/f8d613fe-69dc-483e-9c74-29558b0a5c08)
+
+> Malicious 호스트는 Victim에 변조된 ARP패킷이 담긴 프레임을 전송한다.
+![Victim_poisoning](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/d66d5315-75c1-40d9-aa68-e6b44b6b5da1)
+
+> Malicious 호스트는 Gateway에 변조된 ARP패킷이 담긴 프레임을 전송한다.
+![Gateway_poisoning](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/3ff48402-0fbb-411f-b276-fb55bd3aa0a0)
+
+
+
 ## 결론
 - ARP Spoofing은 MITM공격하기전 사전작업에 해당하는 네트워크 공격 기법이다.
 - ARP Spoofing은 컴퓨터간의 통신을 막을 수 있어 Dos공격이 될 수도 있다.
