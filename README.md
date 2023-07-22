@@ -44,10 +44,30 @@
   외부로부터 들어온 데이터를 malicious가 받도록 하기위한 변조 패킷이다.
 
 ## 실행 환경
-- victim computer : window7
+- victim computer : window11
 - malicious computer : macOS
 - gateway : iptime(wifi)
 
 ## 실행 화면
+> 피해자(victim)컴퓨터 IP 및 변조  ARP Cache Table
+![windowsIP](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/d0e344fa-71ef-4fe5-a3f7-97a1392f23e2)
+![windows_arp_cache_table](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/e00d88a7-8ba9-4b1a-b6de-da39c577b7e6)
 
+> 파이썬 스크립트 arp_spoofing.py 실행
+
+> 피해자(victim)의 감염된 ARP Cache Table
+![poisoning_arp_cache_table_win](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/e64714c6-d1a0-4953-84bd-04f0d20b817e)
+
+> 피해자(victim)가 받은 자신의 MAC주소를 묻는 패킷 구현로직1,2 해당
+![who_is_20_victim](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/ade67e69-2dd3-47d0-af14-2ad8840a78f1)
+
+> Gateway MAC주소를 알기위한 요청 패킷
+![who_is_gateway](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/681368c1-5fe4-434a-80c7-c5d7928068f5)
+
+>  
+
+> 피해자(victim)가 자신의 MAC주소를 기입하여 공격자에게 유니캐스팅 
+![unicasting_vicitim_to_malicious](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/fe25498e-779f-4db4-9615-3ddb40a7a973)
+
+>   
 
