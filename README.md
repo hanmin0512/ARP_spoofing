@@ -1,5 +1,6 @@
 # ARP_spoofing
-## 개념
+## 개념 (ARP개념은 알고 있다고 가정하고 설명.)
+- <a href="https://github.com/hanmin0512/Concept_ARP"> ARP 개념 학습하기</a>
 - 피해자(victim)의 ARP Cache Table을 의도적으로 감염시켜 피해자 패킷을 훔친다(sniff)
 - 기본적으로 ARP Spoofing 과 sniffing은 같이 이루어저야 시너지가 좋다.
 - 하나의 네트워크에서는 호스트들 끼리 한번 이상 통신을 했다면 ARP Cache Table에 저장을하고 주기적으로 ARP요청 패킷을 보내 갱신을 한다.
@@ -29,6 +30,7 @@
 - nmap 툴을 사용한다.
 - python으로 구현한다.
 - scapy 모듈 사용한다.
+- WireShark를 이용하여 통신하는 패킷들을 확인한다.
 
 ## 실제 구현 로직
 - Target_A의 IP정보를 갖고 ARP 요청 패킷을 Broadcast주소로 전송한다.
@@ -49,25 +51,36 @@
 - gateway : iptime(wifi)
 
 ## 실행 화면
-> 피해자(victim)컴퓨터 IP 및 변조  ARP Cache Table
+> 피해자(victim)컴퓨터 IP 및 ARP Cache Table
 ![windowsIP](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/d0e344fa-71ef-4fe5-a3f7-97a1392f23e2)
 ![windows_arp_cache_table](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/e00d88a7-8ba9-4b1a-b6de-da39c577b7e6)
 
-> 파이썬 스크립트 arp_spoofing.py 실행
+> 파이썬 스크립트 arp_spoofing.py 실행 <br>
+![스크린샷 2023-07-23 오전 1 54 00](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/8dde4388-c2ec-4c51-a77f-55980ead4cbb)
 
-> 피해자(victim)의 감염된 ARP Cache Table
+> 피해자(victim)의 감염된 ARP Cache Table <br>
 ![poisoning_arp_cache_table_win](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/e64714c6-d1a0-4953-84bd-04f0d20b817e)
 
 > 피해자(victim)가 받은 자신의 MAC주소를 묻는 패킷 구현로직1,2 해당
 ![who_is_20_victim](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/ade67e69-2dd3-47d0-af14-2ad8840a78f1)
 
-> Gateway MAC주소를 알기위한 요청 패킷
-![who_is_gateway](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/681368c1-5fe4-434a-80c7-c5d7928068f5)
-
->  
-
 > 피해자(victim)가 자신의 MAC주소를 기입하여 공격자에게 유니캐스팅 
 ![unicasting_vicitim_to_malicious](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/fe25498e-779f-4db4-9615-3ddb40a7a973)
 
->   
+> Gateway MAC주소를 알기위한 요청 패킷
+![who_is_gateway](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/681368c1-5fe4-434a-80c7-c5d7928068f5)
+
+> Gateway MAC주소를 malicious(공격자)에게 전송
+![스크린샷 2023-07-23 오전 2 07 54](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/d938d722-a53c-4059-bead-293dc0f4470b)
+
+> 피해자 컴퓨터가 받은 Gateway의 MAC주소가 공격자 MAC주소로 변조한 패킷
+ ![스크린샷 2023-07-23 오전 2 09 03](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/17a8a438-4f80-41a4-a9cf-a110d4b6f79e)
+
+> Gateway가 받은 피해자 컴퓨터 MAC주소가 공격자 MAC주소로 변조된 패킷
+![스크린샷 2023-07-23 오전 2 09 37](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/b3146e8c-8baf-450d-add2-e8eb575da78b)
+
+## 결론
+- ARP Spoofing은 MITM공격하기전 사전작업에 해당하는 네트워크 공격 기법이다.
+- ARP Spoofing은 컴퓨터간의 통신을 막을 수 있어 Dos공격이 될 수도 있다.
+
 
