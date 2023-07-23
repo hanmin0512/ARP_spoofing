@@ -37,10 +37,12 @@
 - Gateway MAC주소를 알아내기 위해 Gateway IP정보를 갖고 ARP 패킷을 Broadcast 주소로 전송한다.
 - Gateway로 부터 유니케스트 통신으로 받은 패킷을 통해 gateway MAC주소를 알아낸다.
 - scapy 모듈을 이용하여 Operation Code가 2인 (reply packet) 을 변조하여 만든다
-- 변조1 : ARP reply packet[src_IP = GatewayIP, src_MAC = malicious_MAC, dst_IP = Target_A_IP, dst_MAC = Target_A_MAC] <br>
+- 변조1  <br>
+  ARP reply packet[src_IP = GatewayIP, src_MAC = malicious_MAC, dst_IP = Target_A_IP, dst_MAC = Target_A_MAC] <br>
   즉 Target_A에게 Gateway의 MAC주소를 malicious의 MAC주소로 변조한 패킷을 전송하는 것이다. <br>
   변조된 패킷은 Gateway가 자신의 MAC주소를 기입하여 보낸것처럼 보여진다.
-- 변조2 : ARP reply packet[src_IP = Target_A_IP, src_MAC = malicious_MAC, dst_IP = Gateway_IP, dst_MAC = Gateway_MAC] <br>
+- 변조2 <br>
+  ARP reply packet[src_IP = Target_A_IP, src_MAC = malicious_MAC, dst_IP = Gateway_IP, dst_MAC = Gateway_MAC] <br>
   즉 외부로부터 Target_A가 목적지인 패킷을 받을 때 Gateway를 거쳐야 하므로 Gateway의 ARP Cache Table에 Target_A의 MAC주소를 malicious MAC주소로 변조시켜 <br>
   외부로부터 들어온 데이터를 malicious가 받도록 하기위한 변조 패킷이다.
 
