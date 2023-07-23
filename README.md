@@ -7,10 +7,9 @@
 - 이때 변조된 ARP 패킷을 보내서 통신을 가로챌 수 있다.
 
 ## 원리
-- 호스트 A(Sender)와 B(Receiver)가 통신을 하려고한다. 호스트 A는 빠른 통신을 위해 주기적으로 ARP Cache Table을 갱신을 한다.
+- 호스트 A(Sender)와 인터넷을 하려고한다. 호스트 A는 빠른 통신을 위해 주기적으로 ARP Cache Table을 갱신(ARP request)을 한다.
 - 중간에 malicious(악의적인 사용자)가 호스트 A에게 변조된 ARP 패킷을 지속적으로 보낸다.
 - 변조된 패킷을 받은 호스트 A의 ARP Cache Table은 변조되었다.
-- 호스트 A는 호스트 B에게 데이터를 보낸다면.
 - 호스트 A는 데이터 전송시 호스트 A의 ARP Cache Table을 참조하여 데이터를 전송하기 때문에 malicious에게 데이터가 전송된다.
 
 ## 어떤 방식으로 ARP 패킷을 변조하여 ARP Spoofing 공격을 할까?
@@ -51,6 +50,10 @@
 - gateway : iptime(wifi)
 
 ## 실행 화면
+> nmap을 사용하여 Host scanning <br>
+![스크린샷 2023-07-23 오후 3 31 27](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/0744b391-93e9-4c8c-8f6f-fa6461e398da)
+
+ 
 > 피해자(victim)컴퓨터 IP 및 ARP Cache Table
 ![windowsIP](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/d0e344fa-71ef-4fe5-a3f7-97a1392f23e2)
 ![windows_arp_cache_table](https://github.com/hanmin0512/ARP_spoofing/assets/37041208/e00d88a7-8ba9-4b1a-b6de-da39c577b7e6)
